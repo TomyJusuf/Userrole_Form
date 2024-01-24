@@ -1,7 +1,7 @@
 export default function UsersBoarder() {
   return (
     <div>
-      <div className=" border-[3px] border-stone-300 w-[950px] h-[750px] container mx-auto overflow-y-scroll block">
+      <div className=" border-[3px] border-stone-300 2xl:min-w-[900px]  xl:min-w-[800px] lg:min-w-[700px] md:min-w-[700px] sm:min-w-[610px] h-[750px]  container mx-auto overflow-y-scroll block ">
         {/* Card start here */}
         <div className=" mx-auto flex flex-wrap justify-between items-center w-5/6 mt-10">
           <div className="flex flex-wrap justify-between">

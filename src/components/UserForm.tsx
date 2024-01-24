@@ -1,7 +1,7 @@
 export default function UserForm() {
   return (
-    <div className=" flex flex-row  items-center  max-w-[500px] h-[530px] mx-auto ">
-      <div>
+    <div className=" flex flex-row  items-center 2xl:max-w-[500px]  xl:max-w-[400px] h-[530px] mx-auto lg:max-w-[700px] md:max-w-[700px] sm:min-w-[500px] ">
+      <div className="">
         <h1 className="text-center text-blue-400 uppercase text-5xl font-bold">
           User form
         </h1>
