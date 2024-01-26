@@ -2,11 +2,12 @@ import UserForm from './components/UserForm';
 import UsersBoarder from './components/UsersBoarder';
 import { useState } from 'react';
 import './index.css';
+import { Inputs } from './components/UserForm';
 
 function App() {
   const [formData, setFormData] = useState<any>(null);
 
-  const handleDataSubmit = (data: any) => {
+  const handleDataSubmit = (data: Inputs) => {
     setFormData(data);
   };
   return (

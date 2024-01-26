@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-type Inputs = {
+export type Inputs = {
   firstName: string;
   lastname: string;
   selectRole: 'admin' | 'editor' | 'user';
@@ -10,18 +10,23 @@ type Inputs = {
   // selectRole: { label: string; value: string };
 };
 
-const dataArray: any = [];
+const dataArray: Inputs[] = [];
 export default function UserForm({
   onDataSubmit,
 }: {
   onDataSubmit: (data: Inputs) => void;
 }) {
-  const [items, setItems] = useState<Inputs>();
-  const [formData, setFormData] = useState<Inputs | null>(null);
+  const [items, setItems] = useState<Inputs | undefined>();
+
   const updateFormData = (data: Inputs): void => {
     dataArray.push(data);
     setItems(data);
   };
+
+  // The localstorage is here:
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(items));
+  }, [items]);
 
   const {
     register,
@@ -32,8 +37,9 @@ export default function UserForm({
 
   const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
     updateFormData(data);
-    setFormData(data);
+
     onDataSubmit(data);
+    console.log(data);
   };
   return (
     <div className=" flex flex-row  items-center justify-center 2xl:max-w-[500px] xl:max-w-[450px] lg:w-[300px]  h-[530px] mx-auto  md:max-w-[700px] sm:min-w-[500px] ">
