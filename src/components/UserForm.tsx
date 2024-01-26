@@ -1,4 +1,5 @@
 // import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 type Inputs = {
@@ -9,11 +10,17 @@ type Inputs = {
   // selectRole: { label: string; value: string };
 };
 
-export const dataArray: any = [];
-export default function UserForm() {
+const dataArray: any = [];
+export default function UserForm({
+  onDataSubmit,
+}: {
+  onDataSubmit: (data: Inputs) => void;
+}) {
+  const [items, setItems] = useState<Inputs>();
+  const [formData, setFormData] = useState<Inputs | null>(null);
   const updateFormData = (data: Inputs): void => {
     dataArray.push(data);
-    console.log(dataArray);
+    setItems(data);
   };
 
   const {
@@ -23,8 +30,10 @@ export default function UserForm() {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<Inputs> = (data: Inputs) => {
     updateFormData(data);
+    setFormData(data);
+    onDataSubmit(data);
   };
   return (
     <div className=" flex flex-row  items-center justify-center 2xl:max-w-[500px] xl:max-w-[450px] lg:w-[300px]  h-[530px] mx-auto  md:max-w-[700px] sm:min-w-[500px] ">
