@@ -1,8 +1,8 @@
-import { useData } from './DataContext';
+import { dataArray } from './UserForm';
 
 export default function UsersBoarder() {
-  const { formData }: any = useData();
-  console.log(formData);
+  console.log(dataArray);
+
   return (
     <div>
       <div className=" border-[3px] border-stone-300 2xl:min-w-[900px]  xl:w-[950px] lg:min-w-[650px] md:min-w-[700px] sm:min-w-[610px] h-[750px]  container mx-auto overflow-y-scroll block md:h-[450px] md:mb-5 md:mt-[-95px] sm:mt-[-95px] sm:mb-10 sm:h-[450px] xs:mt-[-155px] xs:h-[400px] xs:w-[470px]">
