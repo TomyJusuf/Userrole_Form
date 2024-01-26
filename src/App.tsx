@@ -5,7 +5,7 @@ import './index.css';
 import { Inputs } from './components/UserForm';
 
 function App() {
-  const [formData, setFormData] = useState<any>(null);
+  const [formData, setFormData] = useState<Inputs | undefined>();
 
   const handleDataSubmit = (data: Inputs) => {
     setFormData(data);

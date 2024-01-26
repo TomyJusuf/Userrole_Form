@@ -2,12 +2,8 @@ import { useState, useEffect } from 'react';
 
 import { Inputs } from './UserForm';
 
-type FormDataProps = {
-  formData: Inputs;
-};
-
-export default function UsersBoarder({ formData }: { formData: any }) {
-  const [data, setData] = useState<any[]>([]);
+export default function UsersBoarder({ formData }: { formData?: Inputs }) {
+  const [data, setData] = useState<Inputs[]>([]);
 
   useEffect(() => {
     if (formData) {
@@ -22,7 +18,7 @@ export default function UsersBoarder({ formData }: { formData: any }) {
 
   const handleDelete = (index: number) => {
     // Create a new array without the element at the specified index
-    const newData = data.filter((_, i) => i !== index);
+    const newData: Inputs[] = data.filter((_, i) => i !== index);
     setData(newData);
   };
   return (
